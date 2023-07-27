@@ -1,0 +1,20 @@
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.formLabel {
+  margin-bottom: 8px;
+}
+
+.formInput {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+
+.formButton {
+  margin-top: 16px;
+}

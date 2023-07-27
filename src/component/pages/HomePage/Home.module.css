@@ -1,0 +1,49 @@
+.container {
+  padding-top: 4.5rem;
+}
+
+.navbar {
+  background-color:  #a3e0b6;
+}
+
+.collapse {
+  justify-content: flex-end;
+}
+
+.navbarNav {
+  font-size: 18px;
+}
+
+.main {
+  background-color: #f8f9fa;
+  padding-top: 80px;
+}
+
+.mainContainer {
+  text-align: center;
+}
+
+.heading {
+  font-size: 36px;
+}
+
+.subheading {
+  font-size: 24px;
+  margin-bottom: 2rem;
+}
+
+.btn {
+  margin-top: 2rem;
+}
+
+.footer {
+  background-color: #f8f9fa;
+}
+
+.footerText {
+  font-size: 14px;
+}
+
+li {
+   float: right;
+}
