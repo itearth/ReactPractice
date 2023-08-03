@@ -130,6 +130,7 @@ const Navbar = () => {
         <Link to={'/table'} className={styles.navbarLink}>Table</Link>
         <Link to={'/about'} className={styles.navbarLink}>About</Link>
         <Link to={'/profile'} className={styles.navbarLink}>Profile</Link>
+        <Link to={'/quotes'} className={styles.navbarLink}>Quotes</Link>
       </div>
       <div className={styles.userProfileContainer}>
         <div className={`dropdown ${styles.dropdown}`}>

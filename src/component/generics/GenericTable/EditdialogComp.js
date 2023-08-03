@@ -19,7 +19,7 @@ const EditDialog = ({ open, handleClose, formData, handleFormChange, handleFormS
           If you want to update any employee details, fill out the form and press OK.
         </DialogContentText>
         <br />
-        <form onSubmit={handleFormSubmit}>
+        <form onSubmit={handleFormSubmit}>+*
           <br />
           <label htmlFor="name">
             Name:
