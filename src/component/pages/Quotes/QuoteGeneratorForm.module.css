@@ -1,0 +1,18 @@
+/* QuoteGeneratorForm.module.css */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+  /* Add the following styles to ensure consistent alignment */
+  width: 100%; /* Make sure the container takes full width */
+  box-sizing: border-box; /* Include padding in width calculation */
+}
+
+.button {
+  margin-top: 50px;
+}
+
+.dialogTitle {
+  flex: 1;
+}

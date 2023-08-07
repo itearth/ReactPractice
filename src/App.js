@@ -4,30 +4,21 @@ import TodoList from "./component/pages/TodoListPage/TodoList";
 import LoginPage from "./component/pages/LoginPage/Login";
 import HomePage from './component/pages/HomePage/Home';
 import Table from './component/pages/Table/Table';
-import QuoteGenerator from './component/pages/Quotes/Quotes';
-import { Provider } from 'react-redux';
-import store from './redux/store';
-
-
-
+import QuoteGeneratorForm from './component/pages/Quotes/QuoteGeneratorForm';
 
 const App = () => {
   return (
     <Router>
-      <Provider store={store}> <div className="App"> 
         {/* <Switch> */}
            <Routes>
           <Route path="/" element={<LoginPage />} />
           <Route path="/todo" element={<TodoList />} />
           <Route path="/home" element={<HomePage />} /> 
           <Route path="/table" element={<Table />} /> 
-          <Route path="/quotes" element={<QuoteGenerator />} /> 
+          <Route path="/quotes" element={<QuoteGeneratorForm />} /> 
           {/* <Route path="/home" element={<Home />} />  */}
           </Routes>
-        {/* </Switch> */}
-      </div>
-      </Provider>
-     
+        {/* </Switch> */}     
     </Router>
   );
 }
