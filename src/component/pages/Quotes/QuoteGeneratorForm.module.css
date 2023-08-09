@@ -1,18 +1,108 @@
-/* QuoteGeneratorForm.module.css */
+
 .container {
   display: flex;
-  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px;
+}
+
+.btnSuccess {
+  border: 1px solid #45b191;
+  color: white;
+  cursor: pointer;
+  border-radius: 30px;
+  background-color: #45b191;
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
   align-items: center;
-  padding: 16px;
-  /* Add the following styles to ensure consistent alignment */
-  width: 100%; /* Make sure the container takes full width */
-  box-sizing: border-box; /* Include padding in width calculation */
 }
 
-.button {
-  margin-top: 50px;
+.form {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  width: 40%;
 }
 
-.dialogTitle {
+.form label {
+  margin-bottom: 8px;
+}
+
+.form input,
+.form select {
+  margin-bottom: 16px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form button {
+  padding: 8px 16px;
+  background-color: #45b191;;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.dataBox {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.dataItem {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+
+.tabContainer {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+}
+
+.tabs {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #f0f0f0;
+  padding: 10px;
+}
+
+.tab {
+  padding: 10px;
+  background-color: #e0e0e0;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+.tab:hover {
+  background-color: #d0d0d0;
+}
+
+.tabContent {
+  flex: 3;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  margin-left: 10px;
 }

@@ -1,9 +1,9 @@
 import {combineReducers} from '@reduxjs/toolkit';
 
-import counterReducer from './slices/code.slice';
+import quoteReducer from './slices/code.slice';
 
 const rootReducer = combineReducers({
-  quoteState: counterReducer
+  quoteState: quoteReducer
 });
 
 export default rootReducer;
