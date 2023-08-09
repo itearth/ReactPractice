@@ -4,7 +4,7 @@ import TodoList from "./component/pages/TodoListPage/TodoList";
 import LoginPage from "./component/pages/LoginPage/Login";
 import HomePage from './component/pages/HomePage/Home';
 import Table from './component/pages/Table/Table';
-import QuoteGeneratorForm from './component/pages/Quotes/QuoteGeneratorForm';
+import QuotePage from './component/pages/Quotes/QuotePage';
 
 const App = () => {
   return (
@@ -15,7 +15,7 @@ const App = () => {
           <Route path="/todo" element={<TodoList />} />
           <Route path="/home" element={<HomePage />} /> 
           <Route path="/table" element={<Table />} /> 
-          <Route path="/quotes" element={<QuoteGeneratorForm />} /> 
+          <Route path="/quotes" element={<QuotePage />} /> 
           {/* <Route path="/home" element={<Home />} />  */}
           </Routes>
         {/* </Switch> */}     

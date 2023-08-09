@@ -1,26 +1,27 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const quoteState = {
-  quotes: []
+  quotes: [],
 };
 
 const quoteSlice = createSlice({
   name: 'quotes',
   initialState: quoteState,
   reducers: {
-    // setQuote: (state, action) => {
-    //   state.quotes = action.payload;
-    // },
-    // clearQuote: (state) => {
-    //   state.quotes = quoteState.quotes;
-    // },
+    
     addQuote: (state, action) => {
-      //state.quotes.push(action.payload);
-      console.log(action.payload);
+      state.quotes.push(action.payload);
+      //console.log(action.payload);
     },
-    // saveQuote: (state, action) =>{
-    //   state.quotes.push(action.payload);
-    // },
+    editQuote: (state, action) => {
+      const { index, updatedQuote } = action.payload;
+      state.quotes[index] = updatedQuote;
+    },
+    deleteQuote: (state, action) => {
+      const indexToDelete = action.payload;
+      state.quotes.splice(indexToDelete, 1);
+    },
+   
     // add quote
     //delete quote
     //edit quote
