@@ -2,12 +2,23 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Navbar from '../../generics/Navbar/Navbar';
 import styles from './QuotePage.module.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
+
 //import { useDispatch } from 'react-redux';
 import { quoteActions } from '../../../redux/slices/code.slice';
 
 const QuotePage = () => {
   const dispatch = useDispatch();
   const quoteData = useSelector((state) => state.quoteState.quotes);
+
+  // Array of possible background colors
+  const backgroundColors = ['#D2691E', '#483D8B', '#FFC3A0', '#8A2BE2', '#FFD700'];
+
+  // Generate a random index to select a background color
+  const randomColorIndex = Math.floor(Math.random() * backgroundColors.length);
+  const randomBackgroundColor = backgroundColors[randomColorIndex];
+
 
   const [showForm, setShowForm] = useState(false);
   const [quote, setQuote] = useState('');
@@ -27,6 +38,7 @@ const QuotePage = () => {
       name,
       country,
       type,
+      backgroundColor: randomBackgroundColor,
     };
 
     dispatch(quoteActions.addQuote(newQuote)); 
@@ -113,14 +125,22 @@ const QuotePage = () => {
 
  <div className={styles.savedQuotes}>
          {quoteData.map((quote, index) => (
-           <div key={index} className={styles.savedQuote}>
-             <p>{quote.quote}</p>
+           <div 
+           key={index} 
+           className={styles.savedQuote}
+           style={{ backgroundColor: quote.backgroundColor }} 
+           >
+             <h2>{quote.quote}</h2>
              <p>{quote.name}</p>
              <p>{quote.country}</p>
              <p>{quote.type}</p>
              <div>
-             <button onClick={() => handleEdit(index)}>Edit</button>
-              <button onClick={() => handleDelete(index)}>Delete</button>
+             <button onClick={() => handleEdit(index)}>
+             <FontAwesomeIcon icon={faEdit} />
+              </button>
+              <button onClick={() => handleDelete(index)}>
+              <FontAwesomeIcon icon={faTrash} />
+              </button>
             </div>
             </div>
           ))}
@@ -132,17 +152,6 @@ const QuotePage = () => {
 }
 
 export default QuotePage;
-
-
-
-
-
-
-
-
-
-
-
 
 
 
