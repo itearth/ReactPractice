@@ -12,19 +12,13 @@ const QuotePage = () => {
   const dispatch = useDispatch();
   const quoteData = useSelector((state) => state.quoteState.quotes);
 
-  // Array of possible background colors
-  const backgroundColors = ['#D2691E', '#483D8B', '#FFC3A0', '#8A2BE2', '#FFD700'];
-
-  // Generate a random index to select a background color
-  const randomColorIndex = Math.floor(Math.random() * backgroundColors.length);
-  const randomBackgroundColor = backgroundColors[randomColorIndex];
-
-
   const [showForm, setShowForm] = useState(false);
   const [quote, setQuote] = useState('');
   const [name, setName] = useState('');
   const [country, setCountry] = useState('');
   const [type, setType] = useState('');
+  const [editingQuote, setEditingQuote] = useState(-1);
+  //const[editIndex, setEditIndex] = useState(-1);
 
   const toggleForm = () => {
     setShowForm(!showForm);
@@ -38,10 +32,10 @@ const QuotePage = () => {
       name,
       country,
       type,
-      backgroundColor: randomBackgroundColor,
+       backgroundColor: getRandomColor(),
     };
 
-    dispatch(quoteActions.addQuote(newQuote)); 
+    dispatch(quoteActions.addQuote(newQuote));
 
     // Clear form inputs
     setQuote('');
@@ -59,21 +53,37 @@ const QuotePage = () => {
   const [editIndex, setEditIndex] = useState(-1);
 
   const handleEdit = (index) => {
-    setEditIndex(index); // Set the index of the quote to be edited
+    setEditingQuote(index)
+    const quoteToEdit = quoteData[index];
+    setQuote(quoteToEdit.quote);
+    setName(quoteToEdit.name);
+    setCountry(quoteToEdit.country);
+    setType(quoteToEdit.type);
     setShowForm(true); // Show the form for editing
   };
+  
 
   const handleDelete = (index) => {
+    const shouldDelete = window.confirm("Are you sure you want to delete this quote?");
     dispatch(quoteActions.deleteQuote(index));
   };
+  
+  const getRandomColor = () => {
+    const randomColor = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(
+      Math.random() * 256
+    )}, ${Math.floor(Math.random() * 256)})`;
+  
+    return randomColor;
+  };
+
 
     return (
     <div>
       <Navbar />
       <div className={styles.container}>
-        <button className={styles.btnSuccess} onClick={toggleForm}>
-          Add Quote
-        </button>
+      <button className={`${styles.btnSuccess} ${styles.fixedButton}`} onClick={toggleForm}>
+  Add Quote
+</button>
 
         {showForm && (
           <div className={styles.popup}>
@@ -124,26 +134,34 @@ const QuotePage = () => {
         )}
 
  <div className={styles.savedQuotes}>
-         {quoteData.map((quote, index) => (
+ {quoteData.length === 0 ? (
+            <div className={styles.noQuotesFound}>
+           <div className={styles.noQuotesIcon}>😔</div>
+  <div className={styles.noQuotesText}>
+  Oops! No quotes found. Add a quote using the&nbsp;
+    <span className="cursorPointer">👆</span>&nbsp;button at the top-right.
+  </div>
+            </div>
+          ) : (
+         quoteData.map((quote, index) => (
            <div 
            key={index} 
            className={styles.savedQuote}
            style={{ backgroundColor: quote.backgroundColor }} 
            >
-             <h2>{quote.quote}</h2>
-             <p>{quote.name}</p>
-             <p>{quote.country}</p>
-             <p>{quote.type}</p>
+              <h2 className={styles.quotesText}>{quote.quote}</h2>
+              <label className={styles.quotesTexts}>{quote.name}, {quote.type}</label>
              <div>
-             <button onClick={() => handleEdit(index)}>
+             <button onClick={() => handleEdit(index)} className={styles.editButton}>
              <FontAwesomeIcon icon={faEdit} />
               </button>
-              <button onClick={() => handleDelete(index)}>
+              <button onClick={() => handleDelete(index)} className={styles.deleteButton}>
               <FontAwesomeIcon icon={faTrash} />
               </button>
             </div>
             </div>
-          ))}
+          ))
+        )}
         </div> 
 
       </div>  
@@ -152,17 +170,3 @@ const QuotePage = () => {
 }
 
 export default QuotePage;
-
-
-
-
-
-
-
-
-
-
-
-
-
-

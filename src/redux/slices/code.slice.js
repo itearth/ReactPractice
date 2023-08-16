@@ -21,6 +21,10 @@ const quoteSlice = createSlice({
       const indexToDelete = action.payload;
       state.quotes.splice(indexToDelete, 1);
     },
+    // updateQuote: (state, action) => {
+    //   const { index, updatedQuote } = action.payload;
+    //   state.quotes[index] = updatedQuote;
+    // },
    
     // add quote
     //delete quote

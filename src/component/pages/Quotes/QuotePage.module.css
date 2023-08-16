@@ -1,4 +1,19 @@
+@keyframes cursorAnimation {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
 
+.cursorPointer {
+  display: inline-block;
+  animation: cursorAnimation 1.5s infinite;
+}
 .container {
   display: flex;
   justify-content: flex-end; 
@@ -16,6 +31,7 @@
   margin-bottom: 20px;
   font-weight: bolder;
   box-shadow: 2px 2px 4px rgba(4, 7, 4, 0.2) ;
+ 
 }
 
 .popup {
@@ -28,6 +44,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+   z-index: 1000;
 }
 
 .form {
@@ -140,11 +157,112 @@
 .savedQuote {
   width: auto;
   max-width: 900px;
-  padding: 20px 30px;
+  padding: 40px 50px;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.4);
   box-shadow: 0 10px 10px 10px rgba(0, 0, 0, 0.2);
   margin-top: 100px;
   margin-right: 120px;
   text-align: center;
+  display: grid;
+  grid-template-rows: max-content min-content, min-content;
+  row-gap: 20px;
+  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+  border: 1px solid rgba(0, 0, 0, 0.1); /* Add a subtle border */
+  position: relative; /* Needed for pseudo-elements */
+  overflow: hidden; /* Hide any overflow content */    
+  z-index: 999;
+  position: relative;
 }
+.savedQuote:before {
+  content: ""; /* Create a pseudo-element for the border design */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.5); /* White border color */
+  box-sizing: border-box;
+  z-index: -1;
+}
+.savedQuote:hover:before {
+  border: 1px solid rgba(0, 0, 0, 0.5); /* Darker border color on hover */
+}
+.savedQuote div {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+
+.quotesText{
+  font-size: 25px;
+  margin: 0;
+  font-family: cursive;
+  margin-bottom: 20px;
+}
+.quotesTexts{
+  font-size: 20px;
+  margin: 0;
+  font-family: cursive;
+}
+
+.savedQuote:hover {
+  background-color: rgba(255, 255, 255, 0.7); /* Change the background color on hover */
+  transform: scale(1.05); /* Add a slight scale effect on hover */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.fixedButton {
+  position: absolute;
+  top: 130px; /* Adjust the distance from the bottom as needed */
+  right: 20px; /* Adjust the distance from the right as needed */
+}
+
+.editButton,
+.deleteButton {
+  /* Add spacing between buttons */
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: white;
+  transition: color 0.3s ease;
+  float: right;
+  padding: 5px; /* Reduce padding for a cleaner look */
+  margin-left: 10px; /* Add space between the buttons */
+}
+
+.editButton:hover,
+.deleteButton:hover {
+  color: #cfda41; /* Change button color on hover */
+  transform: scale(1.1); /* Slightly increase the scale on hover */
+}
+
+.savedQuote p {
+  font-size: 18px; /* Adjust the font size for better readability */
+  margin: 0; /* Remove default margins */
+  font-style: italic; /* Make the name and type italic */
+  color: #333; /* Darken the text color for better contrast */
+}
+
+.savedQuote h2 {
+  font-size: 28px; /* Increase the font size for the quote text */
+  margin-top: 0; /* Remove top margin to align with other elements */
+}
+
+
+
+.noQuotesFound {
+  text-align: center;
+  margin-top: 100px;
+  padding: 20px;
+  font-size: 18px;
+  background-color: #45b191;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  margin-right: 320px;
+  margin-bottom: 100px;
+}
+
+
