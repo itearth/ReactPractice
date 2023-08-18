@@ -5,6 +5,7 @@ import LoginPage from "./component/pages/LoginPage/Login";
 import HomePage from './component/pages/HomePage/Home';
 import Table from './component/pages/Table/Table';
 import QuotePage from './component/pages/Quotes/QuotePage';
+import PostPage from './component/pages/Post/PostPage';
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
           <Route path="/home" element={<HomePage />} /> 
           <Route path="/table" element={<Table />} /> 
           <Route path="/quotes" element={<QuotePage />} /> 
+          <Route path="/post" element={<PostPage />} />
           {/* <Route path="/home" element={<Home />} />  */}
           </Routes>
         {/* </Switch> */}     

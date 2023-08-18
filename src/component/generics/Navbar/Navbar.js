@@ -131,6 +131,7 @@ const Navbar = () => {
         <Link to={'/about'} className={styles.navbarLink}>About</Link>
         <Link to={'/profile'} className={styles.navbarLink}>Profile</Link>
         <Link to={'/quotes'} className={styles.navbarLink}>Quotes</Link>
+        <Link to={'/post'} className={styles.navbarLink}>Post</Link>
       </div>
       <div className={styles.userProfileContainer}>
         <div className={`dropdown ${styles.dropdown}`}>
