@@ -21,7 +21,7 @@ function PostPage() {
   const [userId, setUserId] = useState('');
 
   useEffect(() => {
-    loadPosts();
+    dispatch(fetchPosts());
   }, [dispatch]);
 
   async function loadPosts() {
@@ -43,9 +43,8 @@ function PostPage() {
         body,
         userId
       };
-      await createPost(dispatch, postData);
-      const updatedPosts = await fetchPosts(dispatch);
-      dispatch(postsActions.setPosts(updatedPosts));
+      await createPost(postData);
+      await dispatch(fetchPosts());
       alert('Post successfully created!');
       setFormVisibility(false);
     } catch (exception) {
@@ -54,6 +53,7 @@ function PostPage() {
       dispatch(postsActions.setLoading(false));
     }
   }
+
 
   return (
     <div className="App">
