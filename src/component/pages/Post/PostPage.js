@@ -27,7 +27,7 @@ function PostPage() {
   async function loadPosts() {
     dispatch(postsActions.setLoading(true));
     try {
-      const data = await fetchPosts();
+      const data = await fetchPosts(dispatch);
       dispatch(postsActions.setPosts(data));
     } catch (exception) {
       // Handle error
@@ -35,20 +35,22 @@ function PostPage() {
       dispatch(postsActions.setLoading(false));
     }
   }
-
   async function handleAddPost() {
-    dispatch(postsActions.setLoading(false));
+    dispatch(postsActions.setLoading(true));
     try {
       const postData = {
-        title: 'Test Post',
-        body: 'Content Dummy',
-        userId: 1
+        title,
+        body,
+        userId
       };
-      await createPost(postData);
+      await createPost(dispatch, postData);
+      const updatedPosts = await fetchPosts(dispatch);
+      dispatch(postsActions.setPosts(updatedPosts));
       alert('Post successfully created!');
-      dispatch(postsActions.setLoading(false));
+      setFormVisibility(false);
     } catch (exception) {
       // Handle error
+    } finally {
       dispatch(postsActions.setLoading(false));
     }
   }
@@ -179,15 +181,35 @@ export default PostPage;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // import React, { useState } from 'react'
 // import { useEffect } from 'react';
 // import { useDispatch, useSelector } from 'react-redux';
-// import axios from 'axios';
+// //import axios from 'axios';
 // import Navbar from '../../generics/Navbar/Navbar';
 // import { postsActions } from '../../../redux/slices/posts.slice';
 // import styles from '../Post/PostPage.module.css';
 // import { BarLoader } from 'react-spinners';
- 
+// import { fetchPosts, createPost } from '../../../../src/services/postService'; 
 
 // function PostPage() {
 
@@ -206,39 +228,29 @@ export default PostPage;
 
 //   async function loadPosts() {
 //     dispatch(postsActions.setLoading(true));
-//     //loading
 //     try {
-//       const response = await axios.get('https://jsonplaceholder.typicode.com/posts');
-//       if (response.status === 200) {
-//         dispatch(postsActions.setPosts(response.data));
-//       }
-    
-//     } 
-//     catch (exception) {
-//       console.log(exception);}
-//       finally{
+//       const data = await fetchPosts();
+//       dispatch(postsActions.setPosts(data));
+//     } catch (exception) {
+//       // Handle error
+//     } finally {
 //       dispatch(postsActions.setLoading(false));
 //     }
-
 //   }
 
 //   async function handleAddPost() {
 //     dispatch(postsActions.setLoading(false));
-//     //adding
 //     try {
-//       const params = {
+//       const postData = {
 //         title: 'Test Post',
 //         body: 'Content Dummy',
 //         userId: 1
 //       };
-//       const response = await axios.post('https://jsonplaceholder.typicode.com/posts', params);
-//       if (response.status === 201) {
-//         alert('Post successfully created!');
-//       }
+//       await createPost(postData);
+//       alert('Post successfully created!');
 //       dispatch(postsActions.setLoading(false));
-
 //     } catch (exception) {
-//       console.log(exception);
+//       // Handle error
 //       dispatch(postsActions.setLoading(false));
 //     }
 //   }
@@ -326,4 +338,6 @@ export default PostPage;
 // }
 
 // export default PostPage;
+
+
 
